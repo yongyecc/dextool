@@ -13,6 +13,6 @@ public interface paseFormatContract {
 	
 	interface View extends BaseView<Presenter>{
 		
-		void showAllStructData(HashMap mHashMap);
+		void showAllStructData(Object mObject);
 	}
 }

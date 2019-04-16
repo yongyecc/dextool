@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class utils {
+public class Utils {
 	
 	public static int FT_APK = 0;
 	
@@ -42,7 +42,7 @@ public class utils {
 		return FT_DEX;
 	}
 	
-	public static void praseDexHeader(ArrayList<String> mArrayList){
+	public static void showDexHeader(byte[] dexData){
 		
 	}
 	

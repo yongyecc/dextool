@@ -13,7 +13,8 @@ public class paseFormatView implements paseFormatContract.View{
 	
 	public void showAllStruct(String fp) {
 		mFilePath = fp;
-		setPresenter(new parseFormatPresenter(mFilePath));
+		parseFormatPresenter mFormatPresenter = new parseFormatPresenter(mFilePath, this);
+		
 	}
 
 	@Override
@@ -24,10 +25,10 @@ public class paseFormatView implements paseFormatContract.View{
 	}
 
 	@Override
-	public void showAllStructData(HashMap mHashMap) {
+	public void showAllStructData(Object mObject) {
 		// TODO Auto-generated method stub
 		System.out.println("ParseHeader:");
-		utils.praseDexHeader((ArrayList<String>) mHashMap.get("fileHeader"));
+		Utils.showDexHeader((byte[])mObject);
 		System.out.println("++++++++++++++++++++++++++++++++++++++++");
 
 		

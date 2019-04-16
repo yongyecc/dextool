@@ -18,7 +18,7 @@ public class DexMain {
 		 */
 		
 		int ftype;
-		ftype = utils.getFileType(fp);
+		ftype = Utils.getFileType(fp);
 		switch (ftype) {
 		//file type£ºAPK
 		case 0:
