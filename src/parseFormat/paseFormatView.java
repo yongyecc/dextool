@@ -28,7 +28,7 @@ public class paseFormatView implements paseFormatContract.View{
 	public void showAllStructData(Object mObject) {
 		// TODO Auto-generated method stub
 		System.out.println("ParseHeader:");
-		Utils.showDexHeader((byte[])mObject);
+		parseFormatParser.showDexHeader((byte[])mObject);
 		System.out.println("++++++++++++++++++++++++++++++++++++++++");
 
 		

@@ -2,6 +2,7 @@ package main;
 
 import javax.swing.text.View;
 
+import common.Utils;
 import parseFormat.*;
 
 public class DexMain {

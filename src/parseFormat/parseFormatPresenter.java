@@ -22,8 +22,9 @@ public class parseFormatPresenter implements paseFormatContract.Presenter{
 		mFilePath = fpath;
 		this.mPresenter = mPresenter;
 		this.mView = mView;
-		this.mView.setPresenter(this);
 		mParseFormatData = new parseFormatData();
+		this.mView.setPresenter(this);
+		
 	}
 
 	@Override
