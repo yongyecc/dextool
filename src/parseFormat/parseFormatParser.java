@@ -6,11 +6,12 @@ import struct.HeaderType;
 public class parseFormatParser {
 
 	public static void showDexHeader(byte[] byteSrc){
-		HeaderType mHeaderType = new HeaderType();
+		HeaderType headerType = new HeaderType();
 		byte[] magic = Utils.copyByte(byteSrc, 0, 8);
-		mHeaderType.magic = magic;
-		
-		System.out.println(mHeaderType.toString());
+		headerType.magic = magic;
+		byte[] checksumByte = Utils.copyByte(byteSrc, 8, 4);
+		headerType.checksum = Utils.bytesToHexString(checksumByte);
+		System.out.println(headerType.toString());
 	}
 	
 	

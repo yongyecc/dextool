@@ -32,7 +32,7 @@ public class HeaderType {
 	 */
 	public byte[] magic = new byte[8];
 	
-	public int checksum;
+	public String checksum;
 	
 	public byte[] siganature = new byte[20];
 	

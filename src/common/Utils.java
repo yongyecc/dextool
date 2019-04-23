@@ -115,6 +115,17 @@ public class Utils {
 		return (byteArray);
 	}
 	
+	/**
+	 * 将byte数组的内容转成int型
+	 * 
+	 * @param res
+	 * @return
+	 */
+	public static int byte2int(byte[] res) { 
+		int targets = (res[0] & 0xff) | ((res[1] << 8) & 0xff00)
+				| ((res[2] << 24) >>> 8) | (res[3] << 24); 
+		return targets; 
+	}
 	
 	
 }
