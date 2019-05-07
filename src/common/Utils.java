@@ -127,5 +127,22 @@ public class Utils {
 		return targets; 
 	}
 	
+	/**
+	 * 将提供的十六进制字符串倒序排放
+	 * 
+	 * @param hexstr	需要被排放的十六进制字符串
+	 * @return	完成排放后的的十六进制字符串
+	 */
+	public static String reverseOrderHexStr(String hexstr) {
+		String[] hexs = hexstr.split(" ");
+		int len = hexs.length;
+		String result = "";
+		for(int i=hexs.length; i>0; i--) {
+			int index = i - 1;
+			result = result + hexs[index];
+		}
+		return result;
+	}
+	
 	
 }

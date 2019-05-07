@@ -27,10 +27,10 @@ public class paseFormatView implements paseFormatContract.View{
 	@Override
 	public void showAllStructData(Object mObject) {
 		// TODO Auto-generated method stub
-		System.out.println("ParseHeader:");
+		System.out.println("Dex File header:");
 		parseFormatParser.showDexHeader((byte[])mObject);
 		System.out.println("++++++++++++++++++++++++++++++++++++++++");
-
+		
 		
 	}
 

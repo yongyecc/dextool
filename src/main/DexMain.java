@@ -1,4 +1,4 @@
-package main;
+package main;	
 
 import javax.swing.text.View;
 
@@ -27,7 +27,7 @@ public class DexMain {
 			break;
 		//file type£ºdex
 		case 1:
-			paseFormatView mView =new paseFormatView();
+			paseFormatView mView = new paseFormatView();
 			mView.showAllStruct(fp);
 			break;
 		default:
