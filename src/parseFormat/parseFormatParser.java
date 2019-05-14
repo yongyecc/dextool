@@ -230,14 +230,10 @@ public class parseFormatParser {
 				item = parseParameterTypeList(srcByte, item.parameters_off, item);
 				System.out.println(String.valueOf(item.shorty_idx) + "," + String.valueOf(item.return_type_idx) 
 				+ "," + item.parameters_off + " -->\tString_id[" + String.valueOf(item.shorty_idx)  + "],Type_id[" + String.valueOf(item.return_type_idx) + "],"
-				+ "{" + String.valueOf(item.parameterCount) + ", {" + parameterList.toString() + "} -->\t"
-				+ stringList.get(item.shorty_idx) + ", " + stringList.get(typeIdsList.get(item.return_type_idx).descriptor_idx) + ", -->\t"
-				+ stringList.get(item.shorty_idx) + " ()");
+				+ "{" + String.valueOf(item.parameterCount) + ", {" + parameterList.toString() + "}");
 			}else {
 				System.out.println(String.valueOf(item.shorty_idx) + "," + String.valueOf(item.return_type_idx) 
-				+ ",0 -->\tString_id[" + String.valueOf(item.shorty_idx)  + "],Type_id[" + String.valueOf(item.return_type_idx) + "],0 parameters -->\t"
-				+ stringList.get(item.shorty_idx) + ", " + stringList.get(typeIdsList.get(item.return_type_idx).descriptor_idx) + ", -->\t"
-				+ stringList.get(item.shorty_idx) + " ()");
+				+ ",0 -->\tString_id[" + String.valueOf(item.shorty_idx)  + "],Type_id[" + String.valueOf(item.return_type_idx) + "],0 parameters");
 			}
 		}
 	}
@@ -254,11 +250,7 @@ public class parseFormatParser {
 		parameterList = new ArrayList<>();
 		for(int i=0;i<typeList.size();i++){
 			int index = typeIdsList.get(typeList.get(i)).descriptor_idx;
-			if(i == typeList.size()-1) {
-				parameterList.add("Type_id["+String.valueOf(index) + "]");
-			}else {
-				parameterList.add("Type_id["+String.valueOf(index) + "],");
-			}
+				parameterList.add("Type_id["+typeList.get(i) + "]");
 			parametersList.add(stringList.get(index));
 		}
 		
