@@ -30,6 +30,12 @@ public class paseFormatView implements paseFormatContract.View{
 		System.out.println("Dex File header:");
 		parseFormatParser.showDexHeader((byte[])mObject);
 		System.out.println("++++++++++++++++++++++++++++++++++++++++");
+		parseFormatParser.parseStringIds((byte[])mObject);
+		parseFormatParser.parseStringList((byte[])mObject);
+		System.out.println("++++++++++++++++++++++++++++++++++++++++");
+		parseFormatParser.parseTypeIds((byte[])mObject);
+		System.out.println("++++++++++++++++++++++++++++++++++++++++");
+		parseFormatParser.parseProtoIds((byte[])mObject);
 		
 		
 	}

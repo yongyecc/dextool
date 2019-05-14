@@ -118,14 +118,29 @@ public class Utils {
 	/**
 	 * 将byte数组的内容转成int型
 	 * 
-	 * @param res
-	 * @return
+	 * @param res	需要被转化的字节数组
+	 * @return	返回转换完成的int型的值
 	 */
 	public static int byte2int(byte[] res) { 
 		int targets = (res[0] & 0xff) | ((res[1] << 8) & 0xff00)
 				| ((res[2] << 24) >>> 8) | (res[3] << 24); 
 		return targets; 
 	}
+	
+	/**
+	 * 将byte数组的内容转成short型(长度为2字节)
+	 * 
+	 * @param b
+	 * @return
+	 */
+	public static short byte2Short(byte[] b) { 
+        short s = 0; 
+        short s0 = (short) (b[0] & 0xff);
+        short s1 = (short) (b[1] & 0xff); 
+        s1 <<= 8; 
+        s = (short) (s0 | s1); 
+        return s; 
+    }
 	
 	/**
 	 * 将提供的十六进制字符串倒序排放
@@ -140,6 +155,24 @@ public class Utils {
 		for(int i=hexs.length; i>0; i--) {
 			int index = i - 1;
 			result = result + hexs[index];
+		}
+		return result;
+	}
+	
+	/**
+	 * 根据提供的参数，在srcByte字节流中，从startOff偏移位置开始获取字节流并转成字符串，截至于0x00
+	 * 
+	 * @param srcByte	被取值的字节流
+	 * @param startOff	取值的起始位置
+	 * @return	被取的字节数组转换成字符串类型的值
+	 */
+	public static String getString(byte[] srcByte, int startOff){
+		byte size = srcByte[startOff];
+		byte[] strByte = Utils.copyByte(srcByte, startOff+1, size);
+		String result = "";
+		try{
+			result = new String(strByte, "UTF-8");
+		}catch(Exception e){
 		}
 		return result;
 	}
