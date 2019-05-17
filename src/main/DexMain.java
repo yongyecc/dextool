@@ -12,8 +12,13 @@ public class DexMain {
 		/**
 		 * 需要删除的临时变量
 		 */
-		String fp = "E:\\eclipseProjects\\parse_androiddex-master\\dex\\classes.dex";
-//		String fp = "E:\\AndroidStudioProjects\\SecurityNews\\app\\build\\intermediates\\transforms\\externalLibsDexMerger\\debug\\0\\classes.dex";
+//		String fp = "E:\\eclipseProjects\\parse_androiddex-master\\dex\\classes.dex";
+		if(args.length < 1) {
+			System.out.printf("\n\tjava -jar readdex.jar <dex file>\n");
+			System.exit(0);
+		}
+		String fp = args[0];
+		
 		/**
 		 * 打印dex文件所有结构体信息
 		 */
