@@ -18,7 +18,6 @@ public class DexMain {
 			System.exit(0);
 		}
 		String fp = args[0];
-		
 		/**
 		 * 打印dex文件所有结构体信息
 		 */
