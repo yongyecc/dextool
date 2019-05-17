@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import struct.HeaderType;
 
@@ -177,5 +178,62 @@ public class Utils {
 		return result;
 	}
 	
+	/**
+	 * 读取C语言中的uleb类型,一直读到字节的最高位为1为止，将读取的所有字节返回，通过decodeUleb128方法将其解码成int值
+	 * 
+	 * 目的是解决整型数值浪费问题
+	 * 长度不固定，在1~5个字节中浮动
+	 * @param srcByte	需要读取的字节流
+	 * @param offset	开始读取的偏移位置
+	 * @return	1~5个字节组成的字节数组
+	 */
+	public static byte[] readUnsignedLeb128(byte[] srcByte, int offset){
+		List<Byte> byteAryList = new ArrayList<Byte>();
+		byte bytes = Utils.copyByte(srcByte, offset, 1)[0];
+		byte highBit = (byte)(bytes & 0x80);
+		byteAryList.add(bytes);
+		offset ++;
+		while(highBit != 0){
+			bytes = Utils.copyByte(srcByte, offset, 1)[0];
+			highBit = (byte)(bytes & 0x80);
+			offset ++;
+			byteAryList.add(bytes);
+		}
+		byte[] byteAry = new byte[byteAryList.size()];
+		for(int j=0;j<byteAryList.size();j++){
+			byteAry[j] = byteAryList.get(j);
+		}
+		return byteAry;
+	}
 	
+	/**
+	 * 解码leb128数据
+	 * 每个字节去除最高位，然后进行拼接，重新构造一个int类型数值，从低位开始
+	 * @param byteAry
+	 * @return
+	 */
+	public static int decodeUleb128(byte[] byteAry) {
+	    int result = 0;
+		
+	    if(byteAry.length == 1){
+	    	return byteAry[0];
+	    }
+	    if(byteAry.length == 2){
+	        result = (byteAry[0] & 0x7f) | ((byteAry[1] & 0x7f) << 7);
+	        return result;
+	    }
+	    if(byteAry.length == 3){
+	        result = (byteAry[0] & 0x7f) | ((byteAry[1] & 0x7f) << 7) | ((byteAry[2] & 0x7f) << 14);
+	        return result;
+	    }
+	    if(byteAry.length == 4){
+	    	result = (byteAry[0] & 0x7f) | ((byteAry[1] & 0x7f) << 7) | ((byteAry[2] & 0x7f) << 14) | ((byteAry[3] & 0x7f) << 21);
+	        return result;
+	    }
+        if(byteAry.length == 5){
+        	result = (byteAry[0] & 0x7f) | ((byteAry[1] & 0x7f) << 7) | ((byteAry[2] & 0x7f) << 14) | ((byteAry[3] & 0x7f) << 21) | ((byteAry[4] & 0x7f) << 28);
+            return result;
+        }
+        return result;
+	}
 }

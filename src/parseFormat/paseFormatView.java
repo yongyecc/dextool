@@ -36,7 +36,14 @@ public class paseFormatView implements paseFormatContract.View{
 		parseFormatParser.parseTypeIds((byte[])mObject);
 		System.out.println("++++++++++++++++++++++++++++++++++++++++");
 		parseFormatParser.parseProtoIds((byte[])mObject);
-		
+		System.out.println("++++++++++++++++++++++++++++++++++++++++");
+		parseFormatParser.parseFieldIds((byte[])mObject);
+		System.out.println("++++++++++++++++++++++++++++++++++++++++");
+		parseFormatParser.parseMethodIds((byte[])mObject);
+		System.out.println("++++++++++++++++++++++++++++++++++++++++");
+		parseFormatParser.parseClassIds((byte[])mObject);
+		System.out.println("++++++++++++++++++++++++++++++++++++++++");
+		parseFormatParser.parseMapItemList((byte[])mObject);
 		
 	}
 
