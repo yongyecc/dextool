@@ -577,7 +577,19 @@ public class parseFormatParser {
 			System.out.printf("\tDirect methods\t-\n");
 			if(item.direct_methods.length != 0) {
 				for(int i=0; i<item.direct_methods.length; i++) {
-					int methodIndex = Utils.decodeUleb128(item.direct_methods[i].method_idx_diff);
+					int methodIndex;
+					if(i==0) {
+						methodIndex = Utils.decodeUleb128(item.direct_methods[i].method_idx_diff);
+					}
+					else {
+						int TvFrontMethodCount = i;
+						methodIndex = Utils.decodeUleb128(item.direct_methods[TvFrontMethodCount].method_idx_diff);
+						while(TvFrontMethodCount>0) {
+							methodIndex += Utils.decodeUleb128(item.direct_methods[TvFrontMethodCount-1].method_idx_diff);;
+							TvFrontMethodCount--;
+						}
+								
+					}
 					int accessflag = Utils.decodeUleb128(item.direct_methods[i].access_flags);
 					int code_off = Utils.decodeUleb128(item.direct_methods[i].code_off);
 					System.out.printf("\t\t#%s\n", String.valueOf(i));

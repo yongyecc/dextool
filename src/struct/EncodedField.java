@@ -9,6 +9,7 @@ public class EncodedField {
 			uleb128 access_flags; // access flags like public, static etc.
 		}
 	 */
+	/** 注意：如果同一个方法中该结构体超过一个，后面的field索引值为前面所有索引值相加的结果*/
 	public byte[] filed_idx_diff;
 	public byte[] access_flags;
 	

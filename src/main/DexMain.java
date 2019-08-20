@@ -37,11 +37,7 @@ public class DexMain {
 		default:
 			
 			break;
-		}
-		
-		
-				
-		
+		}	
 	}
 
 }
